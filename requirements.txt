@@ -1,0 +1,50 @@
+# ============================================================
+# Project Kid — Python Dependencies
+# ============================================================
+# SYSTEM PREREQUISITES (run as root before pip install):
+#   sudo apt update && sudo apt upgrade -y
+#   sudo apt install -y python3 python3-pip python3-venv git tmux curl
+#
+# OLLAMA:
+#   curl -fsSL https://ollama.com/install.sh | sh
+#   ollama pull gemma2:27b
+#   ollama pull nomic-embed-text
+#
+# INSTALL:
+#   python3 -m venv venv
+#   source venv/bin/activate
+#   pip install -r requirements.txt
+#
+# FIRST RUN:
+#   python configurator.py
+# ============================================================
+
+# ── Core ─────────────────────────────────────────────────────
+# LLM inference uses the OpenAI-compatible API (no vendor-specific
+# library needed). Works with Ollama, KoboldCpp, and cloud APIs.
+# The 'requests' library (listed below) handles all HTTP calls.
+chromadb                # Local vector store (long-term memory)
+
+# ── TOML parsing ─────────────────────────────────────────────
+# Python 3.11+ ships tomllib in stdlib; 3.10 needs tomli.
+# tomli-w is needed by configurator.py to *write* TOML files.
+tomli ; python_version < "3.11"
+tomli-w                 # TOML writer (not in stdlib)
+
+# ── Telegram ─────────────────────────────────────────────────
+python-telegram-bot==20.7   # Async Telegram Bot API (v20 requires asyncio)
+
+# ── HTTP / Scraping ──────────────────────────────────────────
+requests                # HTTP calls (Wikipedia, Gutenberg, Moltbook)
+beautifulsoup4          # HTML parsing
+lxml                    # Fast BS4 backend
+
+# ── Configuration / Secrets ──────────────────────────────────
+python-dotenv           # Load .env secrets
+
+# ── Terminal UI ──────────────────────────────────────────────
+rich                    # Pretty logging + configurator UI
+
+# ── Optional: Webcam interface ───────────────────────────────
+# Uncomment when you're ready to use the webcam interface plugin.
+# opencv-python

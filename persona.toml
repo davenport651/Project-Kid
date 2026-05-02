@@ -1,0 +1,39 @@
+# personas/william/persona.toml
+# ─────────────────────────────────────────────────────────────
+# William's plugin configuration.
+#
+# This file controls which action and interface plugins are
+# active for this persona. The plugin must also be enabled
+# in its own action.toml/interface.toml — both must be true.
+#
+# To disable a plugin for William only, remove it from the
+# enabled list. To disable it globally, set enabled = false
+# in the plugin's own .toml file.
+# ─────────────────────────────────────────────────────────────
+
+[persona]
+name         = "William"
+description  = "Scholar from the Grey World, resident of Earth's libraries"
+
+[actions]
+# Actions this persona will use. Weights are read from each action's own toml.
+# Remove an entry here to disable it for William specifically.
+enabled = [
+    "research_wikipedia",
+    "write_project_entry",
+    "read_gutenberg",
+    "social_post",
+]
+
+[interfaces]
+# Interfaces this persona uses.
+enabled = [
+    "telegram",
+    "moltbook",
+    # "webcam",   # William does not have a webcam. Uncomment to add one.
+]
+
+[state_defaults]
+# Starting values for state.json if no file exists
+current_location = "library"
+current_mood     = "focused"

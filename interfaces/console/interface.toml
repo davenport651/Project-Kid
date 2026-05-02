@@ -1,0 +1,6 @@
+[interface]
+enabled     = true
+name        = "console"
+description = "Terminal REPL for interactive chat with the persona"
+type        = "bidirectional"
+requires    = []

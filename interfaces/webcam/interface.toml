@@ -1,0 +1,13 @@
+# interfaces/webcam/interface.toml
+
+[interface]
+enabled     = false          # Disabled until opencv-python is installed
+name        = "webcam"
+description = "Capture a frame periodically and describe what the character 'sees'"
+type        = "sensor"       # Sensor: pushes to inbox only, no send()
+
+[settings]
+capture_interval_seconds = 1800   # How often to take a photo (default: 30 min)
+device_index             = 0      # OpenCV camera index (0 = first camera)
+max_response_tokens      = 200
+description_prompt       = "Describe what you see in this image in 1–2 sentences, as if making a quiet observation."

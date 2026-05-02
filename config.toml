@@ -1,0 +1,25 @@
+[llm]
+backend = "kobold"
+host = "http://localhost:5001"
+neocortex_model = "gemma-4-E4B-it-Q4_K_M"
+embed_model = "nomic-embed-text"
+embed_strategy = "local"
+
+[llm.defaults]
+temperature = 0.75
+top_p = 0.9
+num_predict = 512
+timeout = 300
+
+[loop]
+sleep_min = 300
+sleep_max = 3600
+idle_action_threshold = 7200
+
+[memory]
+retrieval_k = 5
+recent_k = 3
+
+[logging]
+level = "INFO"
+log_to_file = true

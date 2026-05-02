@@ -1,0 +1,28 @@
+# actions/gutenberg/action.toml
+
+[action]
+enabled     = true
+name        = "read_gutenberg"
+description = "Read an excerpt from a Project Gutenberg classic and reflect"
+weight      = 0.15
+
+[settings]
+excerpt_length  = 1000   # Characters to pull from the book
+max_response_tokens = 350
+
+# Numeric Gutenberg book IDs. Add or remove freely.
+# Find IDs at https://www.gutenberg.org/browse/scores/top
+book_ids = [
+    1342,   # Pride and Prejudice
+    11,     # Alice's Adventures in Wonderland
+    1661,   # Sherlock Holmes
+    2701,   # Moby Dick
+    84,     # Frankenstein
+    1400,   # Great Expectations
+    345,    # Dracula
+    74,     # Tom Sawyer
+    4300,   # Ulysses
+    5200,   # Metamorphosis
+    1232,   # The Prince — Machiavelli
+    2554,   # Crime and Punishment
+]

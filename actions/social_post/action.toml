@@ -1,0 +1,12 @@
+# actions/social_post/action.toml
+
+[action]
+enabled     = true
+name        = "social_post"
+description = "Compose and publish a short Moltbook post"
+weight      = 0.15
+
+[settings]
+max_post_length     = 500
+max_response_tokens = 200
+target_interface    = "moltbook"   # Which interface plugin to send through

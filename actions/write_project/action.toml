@@ -1,0 +1,11 @@
+# actions/write_project/action.toml
+
+[action]
+enabled     = true
+name        = "write_project_entry"
+description = "Draft a new entry in the persona's projects.md scratchpad"
+weight      = 0.30
+
+[settings]
+max_response_tokens = 800
+recent_project_chars = 2000   # How many chars of projects.md to show the LLM

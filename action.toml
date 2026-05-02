@@ -1,0 +1,28 @@
+# actions/wikipedia/action.toml
+# ─────────────────────────────────────────────────────────────
+# Wikipedia Research Action
+# Fetches a random (or targeted) Wikipedia article and has
+# the character react to it in their own voice.
+# ─────────────────────────────────────────────────────────────
+
+[action]
+enabled     = true
+name        = "research_wikipedia"
+description = "Fetch and react to a random Wikipedia article"
+weight      = 0.40          # Probability share when the engine rolls for an action
+
+[settings]
+language            = "en"
+use_random_article  = true  # Set false to use topic_list below
+summary_paragraphs  = 3     # How many paragraphs to feed the LLM
+max_response_tokens = 400
+
+# If use_random_article = false, pick randomly from this list
+topic_list = [
+    "Mycology",
+    "Byzantine Empire",
+    "Celestial mechanics",
+    "History of cartography",
+    "Crystallography",
+    "Fermentation",
+]

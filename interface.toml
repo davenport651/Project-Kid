@@ -1,0 +1,15 @@
+# interfaces/telegram/interface.toml
+
+[interface]
+enabled     = true
+name        = "telegram"
+description = "Receive and reply to messages via Telegram Bot API"
+type        = "bidirectional"
+
+[settings]
+poll_interval       = 1.0     # Seconds between getUpdates calls
+max_message_length  = 4096    # Telegram's hard limit; long replies are split
+
+# Set to true to allow any Telegram user to message the character.
+# WARNING: leave false unless you intend to make the bot public.
+allow_all_users = false

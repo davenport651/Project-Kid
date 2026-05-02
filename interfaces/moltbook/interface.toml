@@ -1,0 +1,12 @@
+[interface]
+enabled = false
+name = "moltbook"
+description = "Post to and read mentions from the Moltbook social platform"
+type = "bidirectional"
+
+[settings]
+base_url = "https://moltbook.example.com/api"
+post_endpoint = "/posts"
+feed_endpoint = "/feed"
+feed_limit = 10
+check_mentions = true
