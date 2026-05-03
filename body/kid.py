@@ -24,6 +24,9 @@ import asyncio
 import sys
 from pathlib import Path
 
+# Add the project root to sys.path so we can import from body, mind, Chronopolis
+sys.path.insert(0, str(Path(__file__).parent.parent.resolve()))
+
 if sys.stdout and getattr(sys.stdout, 'encoding', '').lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8')
 if sys.stderr and getattr(sys.stderr, 'encoding', '').lower() != 'utf-8':
@@ -68,17 +71,17 @@ examples:
 async def main() -> None:
     load_dotenv()
     args     = parse_args()
-    base_dir = Path(__file__).parent.resolve()
+    base_dir = Path(__file__).parent.parent.resolve()
 
     # ── Resolve persona dir ───────────────────────────────────
-    persona_dir = base_dir / "personas" / args.persona
+    persona_dir = base_dir / "soul" / "personas" / args.persona
     if not persona_dir.exists():
         print(f"ERROR: Persona directory not found: {persona_dir}")
         print(f"       Create it and add soul files, or run: python configurator.py")
         sys.exit(1)
 
     # ── Load config.toml ──────────────────────────────────────
-    config_file = base_dir / "config.toml"
+    config_file = base_dir / "Chronopolis" / "config.toml"
     if not config_file.exists():
         print("ERROR: config.toml not found.")
         print("       Run: python configurator.py  to generate it.")
@@ -88,7 +91,7 @@ async def main() -> None:
         config = tomllib.load(f)
 
     # ── Setup logging ─────────────────────────────────────────
-    from logging_setup import setup as setup_logging
+    from Chronopolis.logging_setup import setup as setup_logging
 
     log_level = args.log_level or config.get("logging", {}).get("level", "INFO")
     log_file  = (
@@ -118,7 +121,7 @@ async def main() -> None:
         # TODO: add a cleaner one-shot flag to the engine itself.
 
     # ── Start engine ──────────────────────────────────────────
-    from engine import Engine
+    from mind.engine import Engine
 
     engine = Engine(
         persona_dir=persona_dir,

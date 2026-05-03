@@ -27,10 +27,10 @@ from collections import deque
 from pathlib import Path
 from typing import Optional
 
-from context import PluginContext
-from llm_bridge import LLMBridge
-from memory_manager import MemoryManager
-from plugin_loader import LoadedAction, LoadedInterface, PluginLoader
+from mind.context import PluginContext
+from mind.llm_bridge import LLMBridge
+from mind.memory_manager import MemoryManager
+from mind.plugin_loader import LoadedAction, LoadedInterface, PluginLoader
 
 log = logging.getLogger(__name__)
 
@@ -71,10 +71,10 @@ class Engine:
         self.memory = MemoryManager(persona_dir)
 
         # ── Plugin loader ────────────────────────────────────
-        base_dir = Path(__file__).parent
+        base_dir = Path(__file__).parent.parent
         self.loader = PluginLoader(
-            actions_dir=base_dir / "actions",
-            interfaces_dir=base_dir / "interfaces",
+            actions_dir=base_dir / "body" / "actions",
+            interfaces_dir=base_dir / "body" / "interfaces",
             persona_toml=persona_dir / "persona.toml",
         )
         self.loader.load_all()
